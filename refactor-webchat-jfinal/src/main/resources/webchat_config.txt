@@ -1,0 +1,45 @@
+###数据库Mysql
+jdbcUrl = jdbc:mysql://127.0.0.1/jfinal_weixin?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+user = root
+password =
+devMode = true
+
+###
+###微信公众号对接信息
+###
+
+#授权域名
+domain=https://h5dev.gangqinxiansheng.com/api/webchat
+base_domain=https://h5dev.gangqinxiansheng.com
+
+# 微信服务器回调所用的 token
+token=__RentMall__token__
+
+# 测试用的账号
+#appId=wx8bfd5dd927b06d76
+#appSecret=5445e82966986033a4a3296ef17df402
+
+#司库信用
+appId=wx8dc0d5de46ac1baf
+appSecret=08fb90ea700d8e5d46385d90bfbe570f
+
+#是否对消息进行加密，是否对消息进行加密，对应于微信平台的消息加解密方式，false支持明文模式及兼容模式，true支持安全模式及兼容模式
+#encryptMessage=true
+#encodingAesKey=7amY6DjhRB4qaCgr6u8xID1nn88zrpu2Yf3mHXMCVY9
+
+#分享示例文案
+share_default_logo=https://avatar.csdn.net/E/3/D/1_mikelc7.jpg?1529984412
+share_default_title=默认分享标题
+share_default_desc=默认分享描述
+share_default_url=/activity
+#ShareLanding模式下的中转页面
+share_landing_url=/activity/landing
+
+###
+###微信小程序对接信息
+###
+
+appet_appId=wxc7c84151f32e60d0
+appet_appSecret=04cf67070394dda57bbe35bb205ba151
+
+

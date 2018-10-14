@@ -1,0 +1,82 @@
+spring:
+    profiles:
+        active: local
+    application:
+        name: refactor-webchat
+
+server:
+    port: 18081
+
+mybatis:
+    basepackage: com.refactor.webchat.mapper
+    xmlLocation: classpath:mapper/**/*.xml
+
+
+sso:
+  timeout: 5400
+
+###Feign熔断-开启
+feign:
+  hystrix:
+    enabled: true
+
+###设置-Hystrix隔离策略
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            timeoutInMilliseconds: 5000
+
+---
+spring:
+    profiles: local
+    datasource:
+        name: local
+        url: jdbc:mysql://XXX
+        username: root
+        password: XXX
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+    redis:
+        database: 10
+        host: XXX
+        password: XXX
+        port: 6379
+
+ip:
+    local: 127.0.0.1
+    eureka: 127.0.0.1
+    eurekaPort: 8761
+
+eureka:
+    instance:
+        statusPageUrlPath: /info
+        healthCheckUrlPath: /health
+        # docker 部署开启
+        instance-id: ${ip.local}:${spring.application.name}:${server.port}
+        prefer-ip-address: true
+        ip-address: ${ip.local}
+    client:
+        serviceUrl:
+           defaultZone: http://${ip.eureka}:${ip.eurekaPort}/eureka/
+
+
+---
+ 
